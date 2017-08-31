@@ -1,0 +1,39 @@
+{
+  "name": "sails-with-handlebars-tag-lib",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "async": "2.0.1",
+    "consolidate": "^0.14.5",
+    "fs": "0.0.1-security",
+    "grunt": "1.0.1",
+    "handlebars": "^4.0.10",
+    "lodash": "3.10.1",
+    "sails": "^1.0.0-37",
+    "sails-hook-grunt": "^2.0.0",
+    "sails-hook-orm": "^2.0.0-16",
+    "sails-hook-sockets": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "3.5.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 && echo '✔  Your code looks good.'",
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
+    "debug": "node debug app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jay/sails-with-handlebars-tag-lib.git"
+  },
+  "author": "jay",
+  "license": "",
+  "engines": {
+    "node": "8"
+  }
+}
