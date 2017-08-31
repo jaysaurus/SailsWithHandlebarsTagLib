@@ -2,7 +2,7 @@
 (for sails 1.beta)
 
 ### A rudimentary Sails application that adds support for Handlebars tag libraries.
-+ adds \taglib to the sails route
++ adds \taglib to the sails root
 + adds a helper.js that dynamically defines all handlebar helpers within \taglib
 + demonstrates a couple of simple functions within a generic taglibrary
 + renders a page using said tag librar
