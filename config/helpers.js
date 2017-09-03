@@ -10,7 +10,7 @@ try {
         for (var key in taglib) Handlebars.registerHelper(key,taglib[key])
       }
   }
-} catch(e) {
+} catch(e) { 
   console.log('[JE] failed to initialise custom Handlebar helpers.');
 }
 module.exports = Handlebars.helpers;

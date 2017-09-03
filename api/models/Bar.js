@@ -8,6 +8,9 @@
 module.exports = {
 
     attributes: {
+        name: {
+            type: 'string'
+        },
         foo: {
             model: 'foo'
         }

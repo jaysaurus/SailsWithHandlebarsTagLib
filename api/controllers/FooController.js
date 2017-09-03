@@ -9,14 +9,16 @@
 
 module.exports = {
     example: async (req, res) => {
-        var model;
+        var model = {};
         try {
-            model = await Foo.findOne({name: "Mr FooBar"});
+            model.foo = await Foo.findOne({name: "Mr FooBar"}).populate('bars');
+            console.log(model.foo.bars.first());
+            model.bar = await Bar.findOne({name: "Little Bar"}).populate('foo');
         } catch(e) {
             model = e && e.message
                 ? e.message
                 : "something went wrong";
         }
-        res.render('example', { model });
+        res.render('example', model);
     }
 }

@@ -6,8 +6,11 @@
 </head>
 <body>
   <h1>My Amazing Sample Website</h1>
-  <p>Hi! my name is: {{$ model 'name'}}</p>
-  <p>I was created on: {{$ model 'createdAt'}}</p>
+  <p>Hi! my name is: {{$ foo 'name'}}</p>
+  <p>I was created on: {{$ foo 'createdAt'}}</p>
+  <p>My child is: {{$ foo 'bars.0.name'}}</p>
   <p>{{toUpperCase 'my very easy method just speeds up naming planets'}}</p>
+  <p>Hi! my name is: {{$ bar 'name'}}</p>
+  <p>I am a child of: {{$ bar 'foo.name'}}</p>
 </body>
 </html>

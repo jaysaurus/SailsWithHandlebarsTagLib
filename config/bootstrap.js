@@ -9,10 +9,21 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = function(done) {
+module.exports.bootstrap = async function(done) {
+    try {
+      var foo = await ModelService.create(Foo, { name: "Mr FooBar" });
+      console.log(`created "${foo.name}" `);
 
-  Foo.create({ name: "Mr FooBar" })
-     .exec((err, foo) => console.log(err ? err : 'created "Mr FooBar", checkout "http://localhost:1337/foo/example"'));
+      var bar = await ModelService.create(Bar, { name: "Bar child object", foo: foo.id });
+      console.log(`created "${bar.name}"`);
+
+      await ModelService.update(Foo, { name: 'Mr FooBar' }, { bars:bar.id });
+      var barUpdated = await ModelService.update(Bar, { name: "Bar child object" }, { name: "Little Bar" });
+      console.log(`updated "${bar.name}" to "Little Bar"`);
+
+    } catch(e) {
+        console.log(e);
+    }
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   return done();
