@@ -18,9 +18,10 @@ module.exports.bootstrap = async function(done) {
       console.log(`created "${bar.name}"`);
 
       await ModelService.update(Foo, { name: 'Mr FooBar' }, { bars:bar.id });
+
       var barUpdated = await ModelService.update(Bar, { name: "Bar child object" }, { name: "Little Bar" });
       console.log(`updated "${bar.name}" to "Little Bar"`);
-
+      console.log('Ready to go! visit "http://localhost:1337/foo/example" to see taglibs in action!')
     } catch(e) {
         console.log(e);
     }

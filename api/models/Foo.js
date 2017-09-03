@@ -6,7 +6,6 @@
  */
 
 module.exports = {
-
   attributes: {
     name: {
       type: 'string'
@@ -17,23 +16,4 @@ module.exports = {
     }
 
   },
-
-  createAsync: function(params) {
-      return new Promise((resolve, reject) => {
-          try {
-              Foo.create(params)
-                 .exec((err, record) => {
-                     Foo.findOne(params) // resolves issue retrieving "record" parameter
-                        .then(function(foo) {
-                            if (!err) resolve(foo);
-                            else throw new Error('Failed to exec request');
-                        }).catch(function(err) {
-                            throw new Error('item was not created');
-                        });
-              })
-          } catch(e) {
-              reject(e && e.message ? e.message : 'Something unandled went wrong when performing createAsync');
-          }
-      });
-  }
 };

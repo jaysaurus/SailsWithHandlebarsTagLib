@@ -1,9 +1,5 @@
 const _ = require('lodash')
 
-Array.prototype.first = function() {
-    if (this.length > 0) return this[0];
-}
-
 var reduceObject = (obj, param) => {
     if (typeof param === 'string') {
         return _.reduce(
