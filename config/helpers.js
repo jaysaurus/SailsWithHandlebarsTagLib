@@ -1,7 +1,8 @@
 const Handlebars = require('handlebars');
 const fs = require('fs');
 try {
-  var dir = `${__dirname.replace('config', 'taglib/')}`
+  var dir = `${__dirname.replace('config', 'api/taglib/')}`
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir);
   var files = fs.readdirSync(dir);
   if (files) {
       for (var i in files) {
