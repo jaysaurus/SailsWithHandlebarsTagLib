@@ -15,12 +15,14 @@ module.exports.bootstrap = async function(done) {
                          .meta({ fetch: true });
       var bar = await Bar.create({ name: "Bar child object"})
                          .meta({ fetch: true });
+
       console.log(`created "${bar.name}"`);
 
       await Foo.update({ name: 'Mr FooBar' })
                .set({ bars:bar.id });
 
       var oldBarName = bar.name
+
       bar = await Bar.update({ name: "Bar child object" })
                      .set({ name: "Little Bar" })
                      .meta({ fetch: true });
@@ -28,7 +30,7 @@ module.exports.bootstrap = async function(done) {
       console.log(`updated "${oldBarName}" to "${bar[0].name}"`);
       console.log('Ready to go! visit "http://localhost:1337/foo/example" to see taglibs in action!')
     } catch(e) {
-        console.log(e);
+      console.log(e);
     }
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)

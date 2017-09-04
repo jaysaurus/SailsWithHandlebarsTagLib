@@ -6,7 +6,6 @@
 */
 
 module.exports = {
-
     attributes: {
         name: {
             type: 'string'
@@ -15,5 +14,4 @@ module.exports = {
             model: 'foo'
         }
     },
-
 };
