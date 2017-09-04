@@ -19,5 +19,5 @@ module.exports = {
                 : "something went wrong";
         }
         res.render('example', model);
-    }
+    },
 }

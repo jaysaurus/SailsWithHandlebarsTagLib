@@ -11,16 +11,21 @@
 
 module.exports.bootstrap = async function(done) {
     try {
-      var foo = await ModelService.create(Foo, { name: "Mr FooBar" });
-      console.log(`created "${foo.name}" `);
-
-      var bar = await ModelService.create(Bar, { name: "Bar child object", foo: foo.id });
+      var foo = await Foo.create({ name: 'Mr FooBar' })
+                         .meta({ fetch: true });
+      var bar = await Bar.create({ name: "Bar child object"})
+                         .meta({ fetch: true });
       console.log(`created "${bar.name}"`);
 
-      await ModelService.update(Foo, { name: 'Mr FooBar' }, { bars:bar.id });
+      await Foo.update({ name: 'Mr FooBar' })
+               .set({ bars:bar.id });
 
-      var barUpdated = await ModelService.update(Bar, { name: "Bar child object" }, { name: "Little Bar" });
-      console.log(`updated "${bar.name}" to "Little Bar"`);
+      var oldBarName = bar.name
+      bar = await Bar.update({ name: "Bar child object" })
+                     .set({ name: "Little Bar" })
+                     .meta({ fetch: true });
+
+      console.log(`updated "${oldBarName}" to "${bar[0].name}"`);
       console.log('Ready to go! visit "http://localhost:1337/foo/example" to see taglibs in action!')
     } catch(e) {
         console.log(e);

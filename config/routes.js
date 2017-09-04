@@ -21,6 +21,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /foo/example': 'FooController.example',
+  'GET /foo/saveNewBoo': 'FooController.saveNewBoo',
   '/': {
     view: 'homepage'
   },
